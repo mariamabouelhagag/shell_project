@@ -10,6 +10,7 @@ int main(void)
 {
 	pid_t pid;
 	char **tokens = NULL;
+	int i;
 	
 	while (1)
 	{
@@ -31,20 +32,20 @@ int main(void)
 		{
 			if (execvp(tokens[0], tokens) == -1)
 			{
-				perror(tokens[0]);
-				free_tokens(tokens);
+				perror("./shell");
 				exit(EXIT_FAILURE);
+				free_tokens(tokens);
 			}
 		}
 		else if (pid > 0)
 		{
 			wait(NULL);
-			free_tokens(tokens);
+			for(i = 0; tokens[i] != NULL; i++)
+			{
+				free(tokens[i]);
+			}
 		}
-		else
-		{
-			free_tokens(tokens);
-		}
-		return (0);
+			free(tokens);
 	}
+	return (0);
 }

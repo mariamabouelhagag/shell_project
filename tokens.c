@@ -27,7 +27,7 @@ char **token_save()
 			num_tokens++;
 			token = strtok(NULL, delim);
 		}
-		tokens = (char **)malloc((num_tokens + 1) * sizeof(char *));
+		tokens = malloc((num_tokens + 1) * sizeof(char *));
 		if (tokens == NULL)
 		{
 			perror("token_save");
@@ -54,7 +54,10 @@ void free_tokens(char **tokens)
 	
 	for (i = 0; tokens[i] != NULL; i++)
 	{
+		if(tokens[i] != NULL)
+		{
 		free(tokens[i]);
+		}
 		free(tokens);
 	}
 }

@@ -7,6 +7,9 @@
 
 void execute_builtin(char **tokens)
 {
+	if (tokens == NULL || tokens[0] ==NULL)
+		return;
+
 	if (strcmp(tokens[0], "exit") == 0)
 	{
 		free_tokens(tokens);
@@ -22,7 +25,7 @@ void execute_builtin(char **tokens)
 				printf("%s\n", *env);
 				env++;
 			}
-
 			free_tokens(tokens);
 		}
+
 }
