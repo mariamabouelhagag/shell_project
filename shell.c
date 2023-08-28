@@ -46,7 +46,8 @@ int main(void)
 			free_tokens(tokens);
 		}
 		return (0);
-}#include "shell.h"
+}
+#include "shell.h"
 /**
  * main - the main function.
  * @tokens: the array of pointers to be execluded.
