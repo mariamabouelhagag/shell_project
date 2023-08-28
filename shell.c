@@ -17,7 +17,7 @@ int main(void)
 		tokens = token_save();
 		if (tokens[0] != NULL)
 		{
-			execute_builtin(tokens)
+			execute_builtin(tokens);
 		}
 		pid = fork();
 		
@@ -46,4 +46,5 @@ int main(void)
 			free_tokens(tokens);
 		}
 		return (0);
+	}
 }
