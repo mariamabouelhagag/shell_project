@@ -1,5 +1,6 @@
 #ifndef SHELL_H
 #define SHELL_H
+#define _CRTDBG_MAP_ALLOC
 
 #include <stdio.h>
 #include <stdlib.h>

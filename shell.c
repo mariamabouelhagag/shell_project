@@ -1,4 +1,5 @@
 #include "shell.h"
+
 /**
  * main - the main function.
  * @tokens: the array of pointers to be execluded.
@@ -14,12 +15,13 @@ int main(void)
 	
 	while (1)
 	{
-		write(STDIN_FILENO, "$ ", 2);
+		ssize_t ret = write(STDOUT_FILENO, "$ ", 2);
+			if (ret == -1)
+			{
+				perror("write");
+				exit(EXIT_FAILURE);
+			}
 		tokens = token_save();
-		if (tokens[0] != NULL)
-		{
-			execute_builtin(tokens);
-		}
 		pid = fork();
 		
 		if (pid == -1)
@@ -29,7 +31,13 @@ int main(void)
 			return (-1);
 		}
 		if (pid == 0)
-		{
+		{ 
+			if (tokens[0] != NULL)
+			{
+				execute_builtin(tokens);
+			}
+
+
 			if (execvp(tokens[0], tokens) == -1)
 			{
 				perror("./shell");
