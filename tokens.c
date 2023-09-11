@@ -20,7 +20,7 @@ char **token_save()
 	{
 		num_tokens = 0;
 		cmd_copy = strdup(cmd);
-		token = strtok(cmd_copy, delim);
+		token = strtok(cmd, delim);
 		
 		while (token != NULL)
 		{
@@ -34,7 +34,7 @@ char **token_save()
 			exit(EXIT_FAILURE);
 		}
 		i = 0;
-		token = strtok(cmd, delim);
+		token = strtok(cmd_copy, delim);
 		while (token != NULL)
 		{
 			tokens[i] = strdup(token);

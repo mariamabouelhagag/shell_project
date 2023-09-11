@@ -36,9 +36,10 @@ int main(void)
 			{
 				execute_builtin(tokens);
 			}
+			extern char **environ;
 
 
-			if (execvp(tokens[0], tokens) == -1)
+			if (execve(tokens[0], tokens, environ) == -1)
 			{
 				perror("./shell");
 				exit(EXIT_FAILURE);
