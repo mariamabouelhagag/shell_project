@@ -58,6 +58,6 @@ void free_tokens(char **tokens)
 		{
 		free(tokens[i]);
 		}
-		free(tokens);
 	}
+	free(tokens);
 }

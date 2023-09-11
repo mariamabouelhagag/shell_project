@@ -26,7 +26,7 @@ char *get_path(char *cmd)
 			else
 			{
 				free(path_copy);
-				path_token = strtok(NULL, ":");
+				path_token = strtok(NULL, delim);
 			}
 		}
 		free (path_copy);
